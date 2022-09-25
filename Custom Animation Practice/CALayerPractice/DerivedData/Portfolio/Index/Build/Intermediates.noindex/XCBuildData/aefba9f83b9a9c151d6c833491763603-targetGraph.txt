@@ -1,0 +1,3 @@
+Target dependency graph (2 targets)
+Portfolio in Portfolio, no dependencies
+Portfolio in Portfolio, no dependencies

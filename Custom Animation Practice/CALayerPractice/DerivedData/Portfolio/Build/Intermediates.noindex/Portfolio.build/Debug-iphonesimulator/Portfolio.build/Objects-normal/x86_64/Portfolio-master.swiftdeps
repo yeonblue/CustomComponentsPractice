@@ -1,0 +1,28 @@
+version: "Apple Swift version 5.7 (swiftlang-5.7.0.113.202 clang-1400.0.16.2)"
+options: "86098d84dc42e9423fb1b987513fbd0d973967b3ee33cb6c4c22d7ff5280d8fa"
+build_start_time: [1664090309, 392838001]
+build_end_time: [1664090310, 774153947]
+inputs:
+  "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/AppDelegate.swift": [1664086602, 971637248]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Controllers/CloseButton.swift"
+  : [1525799946, 0]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Controllers/SamplesTableViewCell.swift"
+  : [1664090309, 237932920]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Controllers/SamplesTableViewController.swift"
+  : [1664088256, 150546550]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Controls/BudgetView.swift"
+  : [1525799946, 0]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Controls/ClockView.swift"
+  : [1525799946, 0]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Controls/GraphView.swift"
+  : [1525799946, 0]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Controls/LoginView.swift"
+  : [1525799946, 0]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Controls/RatingView.swift"
+  : [1525799946, 0]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Controls/ThermometerView.swift"
+  : [1525799946, 0]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Utility/Drawing.swift"
+  : [1525799946, 0]
+  ? "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio/Utility/Extensions.swift"
+  : [1525799946, 0]

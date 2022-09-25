@@ -1,0 +1,59 @@
+{
+  "_buildCommand2" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "e650f8c16248216151144ccdf8635376e73b06395f214c9ccb497e5e3e3d858c"
+    }
+  ],
+  "containerPath" : "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/Portfolio.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "x86_64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator16.0",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "x86_64"
+      ],
+      "targetArchitecture" : "x86_64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/DerivedData/Portfolio/Index/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/DerivedData/Portfolio/Index/Build/Products",
+      "derivedDataPath" : "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/DerivedData/Portfolio/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/DerivedData/Portfolio/Index/PrecompiledHeaders",
+      "pchPath" : "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/DerivedData/Portfolio/Index/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "INDEX_ARENA_INFO_REGULAR_BUILD_PRODUCTS_DIR" : "/Users/choiseoyeon/Desktop/iOS Project/CustomComponents/Custom Animation Practice/CALayerPractice/DerivedData/Portfolio/Build/Products",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "utility",
+  "schemeCommand" : "launch",
+  "schemeCommand2" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

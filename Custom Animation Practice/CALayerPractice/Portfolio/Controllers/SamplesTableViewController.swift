@@ -49,9 +49,11 @@ class SamplesTableViewController: UITableViewController {
       as? SamplesTableViewCell else { fatalError() }
     
     if let sampleImage = UIImage(named: sampleNames[indexPath.row]) {
-      cell.sampleImageView.image = sampleImage
+      //cell.sampleImageView.image = sampleImage
+      cell.sampleImage = sampleImage
     }
     
+    cell.layer.cornerRadius = 30
     return cell
   }
   
