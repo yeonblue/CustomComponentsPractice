@@ -58,7 +58,7 @@ class SamplesTableViewController: UITableViewController {
   }
   
   func formatCloseButton(in controller: UIViewController) {
-    let closeButton = CloseButton(type: .roundedRect)
+    let closeButton = CloseButton(type: .custom)
     closeButton.addTarget(self, action: #selector(closeController), for: .touchUpInside)
     closeButton.setTitle("Close", for: .normal)
     controller.view.addSubview(closeButton)
@@ -66,8 +66,8 @@ class SamplesTableViewController: UITableViewController {
     let safeArea = controller.view.safeAreaLayoutGuide
     let top = closeButton.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10)
     let trailing = closeButton.rightAnchor.constraint(equalTo: safeArea.rightAnchor, constant: -10)
-    let width = closeButton.widthAnchor.constraint(equalToConstant: 50)
-    let height = closeButton.heightAnchor.constraint(equalToConstant: 50)
+    let width = closeButton.widthAnchor.constraint(equalToConstant: 40)
+    let height = closeButton.heightAnchor.constraint(equalToConstant: 40)
     NSLayoutConstraint.activate([top, trailing, width, height])
   }
   
