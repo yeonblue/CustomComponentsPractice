@@ -37,6 +37,7 @@ class SamplesTableViewController: UITableViewController {
     let sample = sampleNames[indexPath.row]
     let controller = preview.instantiateViewController(withIdentifier: sample)
     formatCloseButton(in: controller)
+    controller.modalPresentationStyle = .fullScreen
     present(controller, animated: true, completion: nil)
   }
   
