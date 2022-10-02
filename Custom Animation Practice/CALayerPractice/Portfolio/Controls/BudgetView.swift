@@ -43,12 +43,27 @@ class BudgetView: UIView {
   var currentValue: Double = 0 {
     didSet {
       label.text = "\(Int(currentValue * step))"
+      
+      //let fromValue = foregroundLayer.strokeEnd
+      //let toValue = CGFloat(currentValue/maxValue)
+      
+      // let animation = CABasicAnimation(keyPath: "strokeEnd")
+      // animation.fromValue = fromValue
+      // animation.toValue = toValue
+      // animation.duration = 1.0
+      // foregroundLayer.strokeEnd = toValue // model Layer에 업데이트를 명시, add 앞에 명시 - 그렇지않으면 Implicit animationd 동작
+      // foregroundLayer.add(animation, forKey: "stroke")
+      
+      // 이렇게만 명시해도 동작
+      let animation = CABasicAnimation(keyPath: "strokeEnd")
+      animation.duration = 1.0
       foregroundLayer.strokeEnd = CGFloat(currentValue/maxValue)
+      foregroundLayer.add(animation, forKey: "stroke")
     }
   }
   
-  var backgroundLayer = CAShapeLayer()
-  var foregroundLayer = CAShapeLayer()
+  var backgroundLayer = ArcLayer(color: #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1))
+  var foregroundLayer = ArcLayer(color: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1))
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -69,21 +84,28 @@ class BudgetView: UIView {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    buildLayer(layer: backgroundLayer)
-    backgroundLayer.strokeColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1).cgColor
     
-    buildLayer(layer: foregroundLayer)
-    foregroundLayer.strokeColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1).cgColor
+    foregroundLayer.bounds = bounds
+    backgroundLayer.bounds = bounds
   }
   
   func buildLayer(layer: CAShapeLayer) {
-    let path = UIBezierPath()
-    path.move(to: CGPoint(x: 0, y: bounds.height/3))
-    path.addLine(to: CGPoint(x: bounds.width, y: bounds.height/3))
+    
+    // 0도가 1사분면 + 쪽, 각도는 시계방향
+    // 180도가 2사분면 - 쪽
+    let startAngle = 0.75 * CGFloat.pi
+    let endAngle = 0.25 * CGFloat.pi
+    let center  = CGPoint(x: bounds.midX, y: bounds.midY)
+    let radius = bounds.width * 0.35
+    let path = UIBezierPath(arcCenter: center,
+                            radius: radius,
+                            startAngle: startAngle, endAngle: endAngle,
+                            clockwise: true)
+
     layer.path = path.cgPath
     layer.lineWidth = 20
     layer.fillColor = nil
-    layer.lineCap = kCALineCapRound
+    layer.lineCap = .round
   }
   
   
@@ -117,4 +139,46 @@ class BudgetView: UIView {
   
 }
 
+class ArcLayer: CAShapeLayer {
+  init(color: UIColor) {
+    super.init()
+    strokeColor = color.cgColor
+    lineWidth = 20
+    fillColor = nil
+    lineCap = .round
+  }
+  
+  /// 직접 presentation Layer를 init 시켜줘야 함
+  override init(layer: Any) {
+    super.init(layer: layer)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  override var bounds: CGRect {
+    didSet {
+      buildLayer()
+    }
+  }
+  
+  func buildLayer() {
+    
+    // 0도가 1사분면 + 쪽, 각도는 시계방향
+    // 180도가 2사분면 - 쪽
+    let startAngle = 0.75 * CGFloat.pi
+    let endAngle = 0.25 * CGFloat.pi
+    let center  = CGPoint(x: bounds.midX, y: bounds.midY)
+    let radius = bounds.width * 0.35
+    let path = UIBezierPath(arcCenter: center,
+                            radius: radius,
+                            startAngle: startAngle, endAngle: endAngle,
+                            clockwise: true)
 
+    self.path = path.cgPath
+    position = CGPoint(x: bounds.midX, y: bounds.midY)
+  }
+}
+
+// presentaion Layer, model Layer

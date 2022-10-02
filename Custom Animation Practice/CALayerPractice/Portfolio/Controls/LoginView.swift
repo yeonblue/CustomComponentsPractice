@@ -89,7 +89,7 @@ class LoginView: UIView {
     
     name.translatesAutoresizingMaskIntoConstraints = false
     var centerX = name.centerXAnchor.constraint(equalTo: centerXAnchor)
-    var top = name.topAnchor.constraintEqualToSystemSpacingBelow(topAnchor, multiplier: 7)
+    var top = name.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 7)
     var width = name.widthAnchor.constraint(equalToConstant: bounds.width/1.4)
     var height = name.heightAnchor.constraint(equalToConstant: 50)
     
@@ -97,7 +97,7 @@ class LoginView: UIView {
     
     password.translatesAutoresizingMaskIntoConstraints = false
     centerX = password.centerXAnchor.constraint(equalTo: centerXAnchor)
-    top = password.topAnchor.constraintEqualToSystemSpacingBelow(name.topAnchor, multiplier: 8)
+    top = password.topAnchor.constraint(equalToSystemSpacingBelow: name.topAnchor, multiplier: 8)
     width = password.widthAnchor.constraint(equalToConstant: bounds.width / 1.4)
     height = password.heightAnchor.constraint(equalToConstant: 50)
     
@@ -105,7 +105,7 @@ class LoginView: UIView {
     
     button.translatesAutoresizingMaskIntoConstraints = false
     centerX = button.centerXAnchor.constraint(equalTo: centerXAnchor)
-    top = button.topAnchor.constraintEqualToSystemSpacingBelow(password.topAnchor, multiplier: 10)
+    top = button.topAnchor.constraint(equalToSystemSpacingBelow: password.topAnchor, multiplier: 10)
     width = button.widthAnchor.constraint(equalToConstant: bounds.width / 3)
     height = button.heightAnchor.constraint(equalToConstant: 44)
     
