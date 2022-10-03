@@ -31,6 +31,9 @@ import UIKit
 @IBDesignable
 class ClockView: UIView {
   
+  var dial = CAShapeLayer()
+  var pointer = CAShapeLayer()
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     setup()
@@ -42,8 +45,31 @@ class ClockView: UIView {
   }
 
   private func setup() {
+    layer.addSublayer(dial)
+    layer.addSublayer(pointer)
+    
+    dial.strokeColor = UIColor.black.cgColor
+    dial.fillColor = UIColor.white.cgColor
+    
+    dial.shadowColor = UIColor.gray.cgColor
+    dial.shadowOpacity = 0.7
+    dial.shadowRadius = 8
+    dial.shadowOffset = .zero
   }
   
+  func buildLayer(width: CGFloat, length: CGFloat, depth: CGFloat) -> UIBezierPath {
+    let path = UIBezierPath()
+    path.move(to: .zero)
+    
+    let endPoint = CGPoint(x: 0, y: -length)
+    path.addLine(to: endPoint)
+    path.move(to: CGPoint(x: -width, y: endPoint.y + depth))
+    path.addLine(to: endPoint)
+    path.move(to: CGPoint(x: width, y: endPoint.y + depth))
+    path.addLine(to: endPoint)
+    
+    return path
+  }
 
   // method for drawing the numbers in section 2
   func draw(number: Int) {
@@ -52,7 +78,27 @@ class ClockView: UIView {
     let size = string.size(withAttributes: attributes)
     string.draw(at: CGPoint(x: bounds.width/2 - size.width/2, y: 10), withAttributes: attributes)
   }
-
   
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    
+    let dialPath = UIBezierPath(ovalIn: bounds)
+    dial.path = dialPath.cgPath
+    
+    let path = buildLayer(width: 10, length: bounds.midX - 20, depth: 20)
+    pointer.path = path.cgPath
+    pointer.strokeColor = UIColor.darkGray.cgColor
+    pointer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+    pointer.lineWidth = 4
+    pointer.lineCap = .round
+    
+    let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+    animation.duration = 60
+    animation.fromValue = 0
+    animation.toValue = Float.pi * 2
+    animation.repeatCount = .greatestFiniteMagnitude
+    
+    pointer.add(animation, forKey: "time")
+  }
 }
 
