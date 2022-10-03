@@ -33,6 +33,7 @@ class ClockView: UIView {
   
   var dial = CAShapeLayer()
   var pointer = CAShapeLayer()
+  var numbersLayer = CAShapeLayer()
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -47,6 +48,7 @@ class ClockView: UIView {
   private func setup() {
     layer.addSublayer(dial)
     layer.addSublayer(pointer)
+    layer.addSublayer(numbersLayer)
     
     dial.strokeColor = UIColor.black.cgColor
     dial.fillColor = UIColor.white.cgColor
@@ -55,6 +57,27 @@ class ClockView: UIView {
     dial.shadowOpacity = 0.7
     dial.shadowRadius = 8
     dial.shadowOffset = .zero
+  }
+  
+  func drawNumber() {
+    numbersLayer.bounds = bounds
+    let center = CGPoint(x: bounds.midX, y: bounds.midY)
+    numbersLayer.position = CGPoint(x: center.x, y: center.y)
+    
+    let renderer = UIGraphicsImageRenderer(size: bounds.size)
+    let image = renderer.image { canvas in
+      let context = canvas.cgContext
+      
+      for i in 1...12 {
+        context.translateBy(x: center.x, y: center.y)
+        context.rotate(by: CGFloat.pi * 2 / 12)
+        context.translateBy(x: -center.x, y: -center.y)
+
+        draw(number: i)
+      }
+    }
+    
+    numbersLayer.contents = image.cgImage
   }
   
   func buildLayer(width: CGFloat, length: CGFloat, depth: CGFloat) -> UIBezierPath {
@@ -99,6 +122,8 @@ class ClockView: UIView {
     animation.repeatCount = .greatestFiniteMagnitude
     
     pointer.add(animation, forKey: "time")
+    
+    drawNumber()
   }
 }
 
