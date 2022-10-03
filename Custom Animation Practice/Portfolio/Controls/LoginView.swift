@@ -31,6 +31,8 @@ import UIKit
 @IBDesignable
 class LoginView: UIView {
   
+  let gradientLayer = CAGradientLayer()
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     setup()
@@ -42,11 +44,30 @@ class LoginView: UIView {
   }
   
   func setup() {
+    layer.addSublayer(gradientLayer)
     setupControls()
+    
+    gradientLayer.shadowOffset = CGSize(width: 5, height: 5)
+    gradientLayer.opacity = 0.5
+    gradientLayer.shadowRadius = 5
   }
   
   override func layoutSubviews() {
     super.layoutSubviews()
+    
+    gradientLayer.bounds = bounds
+    
+    let dark = UIColor.blue.cgColor
+    let light = UIColor.cyan.cgColor
+    
+    gradientLayer.colors = [dark, light]
+    gradientLayer.anchorPoint = .zero
+    gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+    gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+    
+    name.layer.cornerRadius = name.bounds.midY
+    password.layer.cornerRadius = password.bounds.midY
+    button.layer.cornerRadius = button.bounds.midY
   }
 
   // M Subviews
@@ -85,7 +106,8 @@ class LoginView: UIView {
     password.placeholder = "password"
     password.isSecureTextEntry = true
     button.setTitle("Login", for: .normal)
-    button.setTitleColor(.black, for: .normal)
+    button.setTitleColor(.white, for: .normal)
+    button.backgroundColor = .darkGray
     
     name.translatesAutoresizingMaskIntoConstraints = false
     var centerX = name.centerXAnchor.constraint(equalTo: centerXAnchor)
