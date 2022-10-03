@@ -28,19 +28,32 @@
 
 import UIKit
 
+@IBDesignable
 class CloseButton: UIButton {
+  
+  override func draw(_ rect: CGRect) {
+    super.draw(rect)
+    
+    let circle = UIBezierPath(ovalIn: rect.insetBy(dx: 5, dy: 5))
+    UIColor.gray.setFill()
+    circle.fill()
+    
+    let left = rect.width / 3
+    let top = rect.height / 3
+    let right = rect.width * 2/3
+    let bottom = rect.height * 2/3
+    
+    let path = UIBezierPath()
+    path.move(to: CGPoint(x: left, y: top))
+    path.addLine(to: CGPoint(x: right, y: bottom))
+    path.move(to: CGPoint(x: right, y: top))
+    path.addLine(to: CGPoint(x: left, y: bottom))
+    path.lineWidth = 3
+    UIColor.white.setStroke()
+    path.stroke()
+  }
+  
   override func layoutSubviews() {
-    super.layoutSubviews()
-    
-    backgroundColor = .red
-    
-    layer.cornerRadius = bounds.width * 0.5
-    layer.borderColor = UIColor.white.cgColor
-    layer.borderWidth = 2
-    
-    layer.shadowColor = UIColor.black.cgColor
-    layer.shadowOffset = .zero
-    layer.shadowOpacity = 1
-    layer.shadowRadius = 1
+
   }
 }
